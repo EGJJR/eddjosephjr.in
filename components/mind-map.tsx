@@ -72,8 +72,8 @@ export default function MindMap({ nodes, centerNode }: MindMapProps) {
             const target = layoutedNodes.find((n) => n.id === connId)
             if (!target || !node.x || !node.y || !target.x || !target.y) return null
 
-            const centerX = containerRef.current?.clientWidth / 2 || 0
-            const centerY = containerRef.current?.clientHeight / 2 || 0
+            const centerX = (containerRef.current?.clientWidth ?? 0) / 2
+            const centerY = (containerRef.current?.clientHeight ?? 0) / 2
 
             return (
               <line
@@ -97,8 +97,8 @@ export default function MindMap({ nodes, centerNode }: MindMapProps) {
       {/* Nodes */}
       <div className='absolute inset-0 flex items-center justify-center'>
         {layoutedNodes.map((node) => {
-          const centerX = containerRef.current?.clientWidth / 2 || 0
-          const centerY = containerRef.current?.clientHeight / 2 || 0
+          const centerX = (containerRef.current?.clientWidth ?? 0) / 2
+          const centerY = (containerRef.current?.clientHeight ?? 0) / 2
           const isCenter = node.id === center
           const isSelected = selectedNode === node.id
           const isHovered = hoveredNode === node.id
