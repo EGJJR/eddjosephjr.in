@@ -63,7 +63,7 @@ export default function QuoteNetwork({ quotes }: QuoteNetworkProps) {
       </div>
 
       {/* Quotes grid */}
-      <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
+      <div className='grid grid-cols-1 sm:grid-cols-2 gap-6'>
         {filteredQuotes.map((quote) => {
           const isSelected = selectedQuote === quote.id
           const isRelated =
@@ -73,30 +73,58 @@ export default function QuoteNetwork({ quotes }: QuoteNetworkProps) {
             <div
               key={quote.id}
               className={cn(
-                'border rounded-sm p-4 sm:p-6 cursor-pointer transition-all duration-200',
+                'border rounded-sm p-6 sm:p-8 cursor-pointer transition-all duration-300',
+                'relative overflow-hidden',
                 isSelected
-                  ? 'bg-rurikon-100 border-rurikon-500 shadow-lg'
+                  ? 'bg-rurikon-100 border-rurikon-500 shadow-lg scale-[1.02]'
                   : isRelated
-                    ? 'bg-rurikon-50 border-rurikon-300'
-                    : 'bg-transparent border-rurikon-border hover:border-rurikon-300 hover:bg-rurikon-50/50'
+                    ? 'bg-rurikon-50 border-rurikon-300 shadow-sm'
+                    : 'bg-transparent border-rurikon-border hover:border-rurikon-400 hover:bg-rurikon-50/50 hover:shadow-sm'
               )}
               onClick={() => setSelectedQuote(isSelected ? null : quote.id)}
             >
-              <blockquote className='pl-6 -ml-6 sm:pl-10 sm:-ml-10 md:pl-14 md:-ml-14 text-rurikon-400 mb-3'>
-                <p className='mt-0 text-sm sm:text-base'>{quote.text}</p>
+              {/* Decorative left border accent */}
+              <div
+                className={cn(
+                  'absolute left-0 top-0 bottom-0 w-1 rounded-l-sm transition-colors duration-300',
+                  isSelected
+                    ? 'bg-rurikon-500'
+                    : isRelated
+                      ? 'bg-rurikon-300'
+                      : 'bg-rurikon-200'
+                )}
+              />
+
+              <blockquote className='pl-6 -ml-6 sm:pl-8 sm:-ml-8 md:pl-12 md:-ml-12 text-rurikon-400 mb-4 relative'>
+                <p className='mt-0 text-base sm:text-lg leading-relaxed'>
+                  {quote.text}
+                </p>
               </blockquote>
-              <div className='flex items-center justify-between'>
-                <div>
-                  <p className='text-xs text-rurikon-500 font-semibold'>
+
+              <div className='flex items-start justify-between gap-4 pt-4 border-t border-rurikon-border'>
+                <div className='flex-1 min-w-0'>
+                  <p className='text-sm text-rurikon-600 font-semibold mb-1'>
                     {quote.author}
                   </p>
-                  <p className='text-xs text-rurikon-300'>{quote.source}</p>
+                  <p className='text-xs text-rurikon-400'>{quote.source}</p>
                 </div>
                 {isRelated && (
-                  <span className='font-mono text-[0.65rem] text-rurikon-400 uppercase tracking-tighter'>
+                  <span className='font-mono text-[0.65rem] text-rurikon-500 uppercase tracking-tighter bg-rurikon-100 px-2 py-1 rounded-sm flex-shrink-0'>
                     Related
                   </span>
                 )}
+              </div>
+
+              {/* Tags */}
+              <div className='flex flex-wrap gap-1.5 mt-4 pt-4 border-t border-rurikon-border'>
+                {quote.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className='font-mono text-[0.65rem] text-rurikon-300 uppercase tracking-tighter'
+                  >
+                    {tag}
+                  </span>
+                ))}
               </div>
             </div>
           )
@@ -105,19 +133,31 @@ export default function QuoteNetwork({ quotes }: QuoteNetworkProps) {
 
       {/* Related quotes section */}
       {selectedQuote && relatedQuotes.length > 0 && (
-        <div className='mt-7 pt-7 border-t border-rurikon-border'>
-          <h3 className='font-semibold text-rurikon-600 mb-4 text-sm uppercase tracking-wider'>
-            Related Quotes
-          </h3>
-          <div className='space-y-4'>
+        <div className='mt-10 pt-10 border-t border-rurikon-border'>
+          <div className='mb-6'>
+            <h3 className='font-semibold text-rurikon-600 mb-2 text-sm uppercase tracking-wider'>
+              Related Quotes
+            </h3>
+            <p className='text-xs text-rurikon-400'>
+              Quotes connected by similar themes and ideas
+            </p>
+          </div>
+          <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
             {relatedQuotes.map((quote) => (
               <div
                 key={quote.id}
-                className='border-l-2 border-rurikon-300 pl-4 py-2 cursor-pointer hover:border-rurikon-400 transition-colors'
+                className='border-l-4 border-rurikon-300 pl-5 py-4 pr-4 cursor-pointer hover:border-rurikon-400 hover:bg-rurikon-50/50 rounded-r-sm transition-all duration-200'
                 onClick={() => setSelectedQuote(quote.id)}
               >
-                <p className='text-sm text-rurikon-400'>{quote.text}</p>
-                <p className='text-xs text-rurikon-300 mt-1'>{quote.author}</p>
+                <blockquote className='pl-4 -ml-4 sm:pl-6 sm:-ml-6 text-rurikon-400 mb-3'>
+                  <p className='mt-0 text-sm leading-relaxed'>{quote.text}</p>
+                </blockquote>
+                <div className='flex items-center justify-between'>
+                  <p className='text-xs text-rurikon-500 font-semibold'>
+                    {quote.author}
+                  </p>
+                  <p className='text-xs text-rurikon-300'>{quote.source}</p>
+                </div>
               </div>
             ))}
           </div>

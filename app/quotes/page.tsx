@@ -59,11 +59,11 @@ export default function QuotesPage() {
   return (
     <div>
       <h1 className='font-semibold mb-7 text-rurikon-600 text-balance'>
-        Quote Network
+        Quotes
       </h1>
       <p className='mt-7 text-rurikon-400'>
         A collection of meaningful quotes connected by themes and ideas. Click on
-        any quote to see related thoughts.
+        any quote to explore related thoughts and discover connections.
       </p>
       <QuoteNetwork quotes={quotes} />
     </div>
