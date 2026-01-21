@@ -73,7 +73,7 @@ export default function QuoteNetwork({ quotes }: QuoteNetworkProps) {
             <div
               key={quote.id}
               className={cn(
-                'border-l border-rurikon-border pl-4 py-3 cursor-pointer transition-colors',
+                'border-l border-rurikon-border pl-6 py-3 cursor-pointer transition-colors',
                 isSelected
                   ? 'border-l-rurikon-500 bg-rurikon-50'
                   : isRelated
@@ -109,7 +109,7 @@ export default function QuoteNetwork({ quotes }: QuoteNetworkProps) {
             {relatedQuotes.map((quote) => (
               <div
                 key={quote.id}
-                className='border-l border-rurikon-300 pl-3 py-2 cursor-pointer hover:border-l-rurikon-400 hover:bg-rurikon-50/30 transition-colors'
+                className='border-l border-rurikon-300 pl-5 py-2 cursor-pointer hover:border-l-rurikon-400 hover:bg-rurikon-50/30 transition-colors'
                 onClick={() => setSelectedQuote(quote.id)}
               >
                 <blockquote className='text-rurikon-400 mb-1.5'>
