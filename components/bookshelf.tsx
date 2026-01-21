@@ -23,6 +23,36 @@ export interface ContentItem {
 
 interface BookshelfProps {
   items: ContentItem[]
+  isLoading?: boolean
+}
+
+function LoadingSkeleton() {
+  return (
+    <div className='mt-7 space-y-10'>
+      {[1, 2].map((section) => (
+        <div key={section}>
+          <div className='h-4 w-24 bg-rurikon-200 mb-4 animate-pulse' />
+          <ul className='space-y-3'>
+            {[1, 2, 3].map((item) => (
+              <li key={item}>
+                <div className='flex items-center gap-4 py-3 px-2 -mx-2'>
+                  <div className='flex items-center gap-2 flex-shrink-0'>
+                    <div className='h-3 w-6 bg-rurikon-200 animate-pulse' />
+                    <div className='w-1 h-12 rounded-sm bg-rurikon-200 animate-pulse' />
+                  </div>
+                  <div className='flex-1 min-w-0 space-y-2'>
+                    <div className='h-4 w-3/4 bg-rurikon-200 animate-pulse' />
+                    <div className='h-3 w-1/2 bg-rurikon-100 animate-pulse' />
+                  </div>
+                  <div className='h-5 w-16 bg-rurikon-100 animate-pulse rounded-sm' />
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  )
 }
 
 function StatusBadge({ status }: { status: ContentStatus }) {
@@ -56,16 +86,20 @@ function StatusBadge({ status }: { status: ContentStatus }) {
   )
 }
 
-function TypeIcon({ type }: { type: ContentType }) {
-  const icons = {
-    book: '📚',
-    article: '📄',
-    podcast: '🎙️',
-    video: '🎥',
-    course: '🎓',
-    paper: '📑',
+function TypeLabel({ type }: { type: ContentType }) {
+  const labels: Record<ContentType, string> = {
+    book: 'BK',
+    article: 'AR',
+    podcast: 'PC',
+    video: 'VD',
+    course: 'CR',
+    paper: 'PR',
   }
-  return <span className='text-sm'>{icons[type]}</span>
+  return (
+    <span className='font-mono text-[0.65rem] text-rurikon-400 uppercase tracking-tighter'>
+      {labels[type]}
+    </span>
+  )
 }
 
 function ContentDrawer({
@@ -119,7 +153,7 @@ function ContentDrawer({
 
           <div className='mb-7 pr-8'>
             <div className='flex items-center gap-2 mb-2'>
-              <TypeIcon type={item.type} />
+              <TypeLabel type={item.type} />
               <h2 className='font-semibold text-rurikon-600 text-xl'>
                 {item.title}
               </h2>
@@ -129,7 +163,7 @@ function ContentDrawer({
               <StatusBadge status={item.status} />
               {item.rating && (
                 <span className='font-mono text-xs text-rurikon-300'>
-                  ⭐ {item.rating}/5
+                  {item.rating}/5
                 </span>
               )}
             </div>
@@ -188,7 +222,7 @@ function ContentDrawer({
   )
 }
 
-export default function Bookshelf({ items }: BookshelfProps) {
+export default function Bookshelf({ items, isLoading = false }: BookshelfProps) {
   const [selectedItem, setSelectedItem] = useState<ContentItem | null>(null)
 
   const handleItemClick = (item: ContentItem) => {
@@ -197,6 +231,10 @@ export default function Bookshelf({ items }: BookshelfProps) {
 
   const handleCloseDrawer = () => {
     setSelectedItem(null)
+  }
+
+  if (isLoading) {
+    return <LoadingSkeleton />
   }
 
   // Group items by type
@@ -241,9 +279,9 @@ export default function Bookshelf({ items }: BookshelfProps) {
                       'transition-all duration-200'
                     )}
                   >
-                    {/* Content Spine/Icon */}
+                    {/* Content Spine/Label */}
                     <div className='flex items-center gap-2 flex-shrink-0'>
-                      <TypeIcon type={item.type} />
+                      <TypeLabel type={item.type} />
                       <div
                         className={cn(
                           'w-1 h-12 rounded-sm',
@@ -272,7 +310,7 @@ export default function Bookshelf({ items }: BookshelfProps) {
                         )}
                         {item.rating && (
                           <span className='font-mono text-xs text-rurikon-300'>
-                            ⭐ {item.rating}
+                            {item.rating}/5
                           </span>
                         )}
                       </div>
