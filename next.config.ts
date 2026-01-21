@@ -12,9 +12,10 @@ export default withMDX()({
   ],
   experimental: {
     viewTransition: true,
-    mdxRs: {
-      mdxType: 'gfm',
-    },
+    // Temporarily disable mdxRs for faster compilation
+    // mdxRs: {
+    //   mdxType: 'gfm',
+    // },
   },
   transpilePackages: ['shiki'],
   images: {
