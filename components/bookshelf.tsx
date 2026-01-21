@@ -4,27 +4,44 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import cn from 'clsx'
 
-export type BookStatus = 'READING' | 'COMPLETED' | 'TO-READ'
+export type ContentStatus = 'READING' | 'COMPLETED' | 'TO-READ' | 'WATCHING' | 'LISTENING' | 'PLANNED'
+export type ContentType = 'book' | 'article' | 'podcast' | 'video' | 'course' | 'paper'
 
-export interface Book {
+export interface ContentItem {
   id: string
   title: string
   author: string
-  status: BookStatus
+  type: ContentType
+  status: ContentStatus
   quotes?: string[]
+  notes?: string
   analysisLink?: string
+  externalLink?: string
   year?: string
+  rating?: number
 }
 
 interface BookshelfProps {
-  books: Book[]
+  items: ContentItem[]
 }
 
-function StatusBadge({ status }: { status: BookStatus }) {
+function StatusBadge({ status }: { status: ContentStatus }) {
   const statusColors = {
     READING: 'text-rurikon-600 bg-rurikon-100',
     COMPLETED: 'text-rurikon-500 bg-rurikon-50',
     'TO-READ': 'text-rurikon-300 bg-transparent border border-rurikon-200',
+    WATCHING: 'text-rurikon-600 bg-rurikon-100',
+    LISTENING: 'text-rurikon-600 bg-rurikon-100',
+    PLANNED: 'text-rurikon-300 bg-transparent border border-rurikon-200',
+  }
+
+  const statusLabels: Record<ContentStatus, string> = {
+    READING: 'READING',
+    COMPLETED: 'COMPLETED',
+    'TO-READ': 'TO-READ',
+    WATCHING: 'WATCHING',
+    LISTENING: 'LISTENING',
+    PLANNED: 'PLANNED',
   }
 
   return (
@@ -34,17 +51,29 @@ function StatusBadge({ status }: { status: BookStatus }) {
         statusColors[status]
       )}
     >
-      [{status}]
+      [{statusLabels[status]}]
     </span>
   )
 }
 
-function BookDrawer({
-  book,
+function TypeIcon({ type }: { type: ContentType }) {
+  const icons = {
+    book: '📚',
+    article: '📄',
+    podcast: '🎙️',
+    video: '🎥',
+    course: '🎓',
+    paper: '📑',
+  }
+  return <span className='text-sm'>{icons[type]}</span>
+}
+
+function ContentDrawer({
+  item,
   isOpen,
   onClose,
 }: {
-  book: Book
+  item: ContentItem
   isOpen: boolean
   onClose: () => void
 }) {
@@ -89,20 +118,39 @@ function BookDrawer({
           </button>
 
           <div className='mb-7 pr-8'>
-            <h2 className='font-semibold text-rurikon-600 text-xl mb-2'>
-              {book.title}
-            </h2>
-            <p className='text-rurikon-400 text-sm mb-3'>{book.author}</p>
-            <StatusBadge status={book.status} />
+            <div className='flex items-center gap-2 mb-2'>
+              <TypeIcon type={item.type} />
+              <h2 className='font-semibold text-rurikon-600 text-xl'>
+                {item.title}
+              </h2>
+            </div>
+            <p className='text-rurikon-400 text-sm mb-3'>{item.author}</p>
+            <div className='flex items-center gap-2'>
+              <StatusBadge status={item.status} />
+              {item.rating && (
+                <span className='font-mono text-xs text-rurikon-300'>
+                  ⭐ {item.rating}/5
+                </span>
+              )}
+            </div>
           </div>
 
-          {book.quotes && book.quotes.length > 0 && (
+          {item.notes && (
+            <div className='mt-7'>
+              <h3 className='font-semibold text-rurikon-600 mb-4 text-sm uppercase tracking-wider'>
+                Notes
+              </h3>
+              <p className='text-rurikon-400'>{item.notes}</p>
+            </div>
+          )}
+
+          {item.quotes && item.quotes.length > 0 && (
             <div className='mt-7'>
               <h3 className='font-semibold text-rurikon-600 mb-4 text-sm uppercase tracking-wider'>
                 Favorite Quotes
               </h3>
               <div className='space-y-6'>
-                {book.quotes.map((quote, idx) => (
+                {item.quotes.map((quote, idx) => (
                   <blockquote
                     key={idx}
                     className='pl-6 -ml-6 sm:pl-10 sm:-ml-10 md:pl-14 md:-ml-14 text-rurikon-400'
@@ -114,94 +162,140 @@ function BookDrawer({
             </div>
           )}
 
-          {book.analysisLink && (
-            <div className='mt-7 pt-7 border-t border-rurikon-border'>
+          <div className='mt-7 pt-7 border-t border-rurikon-border flex gap-4'>
+            {item.analysisLink && (
               <Link
-                href={book.analysisLink}
+                href={item.analysisLink}
                 className='text-rurikon-500 hover:text-rurikon-700 underline underline-offset-2 decoration-rurikon-300 hover:decoration-rurikon-600 transition-colors'
               >
                 Read my analysis →
               </Link>
-            </div>
-          )}
+            )}
+            {item.externalLink && (
+              <a
+                href={item.externalLink}
+                target='_blank'
+                rel='noopener noreferrer'
+                className='text-rurikon-500 hover:text-rurikon-700 underline underline-offset-2 decoration-rurikon-300 hover:decoration-rurikon-600 transition-colors'
+              >
+                View original →
+              </a>
+            )}
+          </div>
         </div>
       </div>
     </div>
   )
 }
 
-export default function Bookshelf({ books }: BookshelfProps) {
-  const [selectedBook, setSelectedBook] = useState<Book | null>(null)
+export default function Bookshelf({ items }: BookshelfProps) {
+  const [selectedItem, setSelectedItem] = useState<ContentItem | null>(null)
 
-  const handleBookClick = (book: Book) => {
-    setSelectedBook(book)
+  const handleItemClick = (item: ContentItem) => {
+    setSelectedItem(item)
   }
 
   const handleCloseDrawer = () => {
-    setSelectedBook(null)
+    setSelectedItem(null)
+  }
+
+  // Group items by type
+  const groupedItems = items.reduce(
+    (acc, item) => {
+      if (!acc[item.type]) acc[item.type] = []
+      acc[item.type].push(item)
+      return acc
+    },
+    {} as Record<ContentType, ContentItem[]>
+  )
+
+  const typeLabels: Record<ContentType, string> = {
+    book: 'Books',
+    article: 'Articles',
+    podcast: 'Podcasts',
+    video: 'Videos',
+    course: 'Courses',
+    paper: 'Papers',
   }
 
   return (
     <>
-      <div className='mt-7'>
-        <ul className='space-y-3'>
-          {books.map((book) => (
-            <li
-              key={book.id}
-              className='group cursor-pointer'
-              onClick={() => handleBookClick(book)}
-            >
-              <div
-                className={cn(
-                  'flex items-center gap-4 py-3 px-2 -mx-2 rounded-sm',
-                  'border border-transparent',
-                  'hover:border-rurikon-border hover:bg-rurikon-50/50',
-                  'transition-all duration-200'
-                )}
-              >
-                {/* Book Spine */}
-                <div
-                  className={cn(
-                    'w-1 h-12 rounded-sm flex-shrink-0',
-                    'bg-gradient-to-b',
-                    book.status === 'COMPLETED'
-                      ? 'from-rurikon-500 to-rurikon-600'
-                      : book.status === 'READING'
-                        ? 'from-rurikon-400 to-rurikon-500'
-                        : 'from-rurikon-200 to-rurikon-300'
-                  )}
-                />
-
-                {/* Book Info */}
-                <div className='flex-1 min-w-0'>
-                  <div className='flex items-baseline gap-2 flex-wrap'>
-                    <h3 className='font-semibold text-rurikon-600 text-base'>
-                      {book.title}
-                    </h3>
-                    {book.year && (
-                      <span className='font-mono text-xs text-rurikon-300'>
-                        {book.year}
-                      </span>
+      <div className='mt-7 space-y-10'>
+        {Object.entries(groupedItems).map(([type, typeItems]) => (
+          <div key={type}>
+            <h2 className='font-semibold text-rurikon-600 mb-4 text-sm uppercase tracking-wider'>
+              {typeLabels[type as ContentType]}
+            </h2>
+            <ul className='space-y-3'>
+              {typeItems.map((item) => (
+                <li
+                  key={item.id}
+                  className='group cursor-pointer'
+                  onClick={() => handleItemClick(item)}
+                >
+                  <div
+                    className={cn(
+                      'flex items-center gap-4 py-3 px-2 -mx-2 rounded-sm',
+                      'border border-transparent',
+                      'hover:border-rurikon-border hover:bg-rurikon-50/50',
+                      'transition-all duration-200'
                     )}
-                  </div>
-                  <p className='text-sm text-rurikon-400 mt-0.5'>
-                    {book.author}
-                  </p>
-                </div>
+                  >
+                    {/* Content Spine/Icon */}
+                    <div className='flex items-center gap-2 flex-shrink-0'>
+                      <TypeIcon type={item.type} />
+                      <div
+                        className={cn(
+                          'w-1 h-12 rounded-sm',
+                          'bg-gradient-to-b',
+                          item.status === 'COMPLETED'
+                            ? 'from-rurikon-500 to-rurikon-600'
+                            : item.status === 'READING' ||
+                                item.status === 'WATCHING' ||
+                                item.status === 'LISTENING'
+                              ? 'from-rurikon-400 to-rurikon-500'
+                              : 'from-rurikon-200 to-rurikon-300'
+                        )}
+                      />
+                    </div>
 
-                {/* Status Badge */}
-                <div className='flex-shrink-0'>
-                  <StatusBadge status={book.status} />
-                </div>
-              </div>
-            </li>
-          ))}
-        </ul>
+                    {/* Content Info */}
+                    <div className='flex-1 min-w-0'>
+                      <div className='flex items-baseline gap-2 flex-wrap'>
+                        <h3 className='font-semibold text-rurikon-600 text-base'>
+                          {item.title}
+                        </h3>
+                        {item.year && (
+                          <span className='font-mono text-xs text-rurikon-300'>
+                            {item.year}
+                          </span>
+                        )}
+                        {item.rating && (
+                          <span className='font-mono text-xs text-rurikon-300'>
+                            ⭐ {item.rating}
+                          </span>
+                        )}
+                      </div>
+                      <p className='text-sm text-rurikon-400 mt-0.5'>
+                        {item.author}
+                      </p>
+                    </div>
+
+                    {/* Status Badge */}
+                    <div className='flex-shrink-0'>
+                      <StatusBadge status={item.status} />
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
 
-      {selectedBook ? (
-        <BookDrawer
-          book={selectedBook}
+      {selectedItem ? (
+        <ContentDrawer
+          item={selectedItem}
           isOpen={true}
           onClose={handleCloseDrawer}
         />
