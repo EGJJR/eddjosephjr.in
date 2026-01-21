@@ -117,21 +117,23 @@ function ContentDrawer({
     <div
       className={cn(
         'fixed inset-0 z-50 flex items-center justify-center p-4',
-        'bg-rurikon-900/20 backdrop-blur-sm',
-        'transition-opacity duration-300',
-        'opacity-100'
+        'bg-rurikon-900/20 backdrop-blur-sm'
       )}
       onClick={onClose}
+      style={{
+        animation: 'fadeIn 0.4s ease-out',
+      }}
     >
       <div
         className={cn(
           'relative bg-[#fcfcfc] border border-rurikon-border',
           'max-w-2xl w-full max-h-[85vh] overflow-y-auto',
-          'shadow-lg',
-          'transition-transform duration-300',
-          'scale-100'
+          'shadow-lg'
         )}
         onClick={(e) => e.stopPropagation()}
+        style={{
+          animation: 'fadeInUp 0.5s ease-out',
+        }}
       >
         <div className='p-6 sm:p-10 md:p-14'>
           <button

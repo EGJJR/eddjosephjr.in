@@ -38,6 +38,19 @@ export default function Navbar() {
         {/* <Item href='/visuals'>Visuals</Item> */}
         <Item href='/projects'>Projects</Item>
         <Item href='/bookshelf'>Bookshelf</Item>
+        <Item href='/mind-map'>Mind Map</Item>
+        {/* <Item href='/timeline'>Timeline</Item> */}
+        {/* <Item href='/quotes'>Quotes</Item> */}
+        {/* <Item href='/reading-activity'>Reading Activity</Item> */}
+        {/* <Item href='/code-poetry'>Code Poetry</Item> */}
+        {/* <Item href='/thought-experiments'>Thought Experiments</Item> */}
+        {/* <Item href='/projects-cli'>Projects CLI</Item> */}
+        {/* <Item href='/project-archaeology'>Project Archaeology</Item> */}
+        {/* <Item href='/dialogues'>Dialogues</Item> */}
+        {/* <Item href='/design-evolution'>Design Evolution</Item> */}
+        {/* <Item href='/conversations'>Conversations</Item> */}
+        {/* <Item href='/analytics'>Analytics</Item> */}
+        {/* <Item href='/design-system'>Design System</Item> */}
         {/* <Item href='/guestbook'>Guestbook</Item> */}
       </ul>
     </nav>
