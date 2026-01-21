@@ -15,19 +15,18 @@ function NewsletterForm() {
     setStatus('loading')
     setErrorMessage('')
 
-    // TODO: Replace with your actual email service API
-    // Example: Beehiiv, ConvertKit, Mailchimp, etc.
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000))
+      // Beehiiv API integration
+      // Replace with your actual Beehiiv publication ID and API key
+      const response = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      })
 
-      // For now, just show success
-      // In production, replace this with actual API call:
-      // const response = await fetch('/api/newsletter', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify({ email }),
-      // })
+      if (!response.ok) {
+        throw new Error('Subscription failed')
+      }
 
       setStatus('success')
       setEmail('')
@@ -45,6 +44,23 @@ function NewsletterForm() {
       <p className='mt-7 text-rurikon-400 mb-14'>
         Receive emails with valuable knowledge templates and more.
       </p>
+
+      {/* Beehiiv Embed Option */}
+      <div className='mb-10 p-6 border border-rurikon-border rounded-sm bg-rurikon-50'>
+        <p className='text-sm text-rurikon-400 mb-4'>
+          Subscriptions are managed through{' '}
+          <a
+            href='https://www.beehiiv.com'
+            target='_blank'
+            rel='noopener noreferrer'
+            className='text-rurikon-500 hover:text-rurikon-700 underline underline-offset-2'
+          >
+            Beehiiv
+          </a>
+          . Your email will be added to the newsletter list and you'll receive
+          confirmation and welcome emails.
+        </p>
+      </div>
 
       <div className='max-w-lg'>
         {status === 'success' ? (
