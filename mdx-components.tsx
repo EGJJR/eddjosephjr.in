@@ -65,12 +65,12 @@ export const components: Record<string, FC<any>> = {
   p: (props) => <p className='mt-7' {...props} />,
   blockquote: (props) => (
     <blockquote
-      className='pl-6 -ml-6 sm:pl-10 sm:-ml-10 md:pl-14 md:-ml-14 not-mobile:text-rurikon-400'
+      className='pl-4 -ml-4 mobile:pl-6 mobile:-ml-6 sm:pl-10 sm:-ml-10 md:pl-14 md:-ml-14 not-mobile:text-rurikon-400'
       {...props}
     />
   ),
   pre: (props) => (
-    <pre className='mt-7 whitespace-pre md:whitespace-pre-wrap' {...props} />
+    <pre className='mt-7 whitespace-pre overflow-x-auto' {...props} />
   ),
   code: async (props) => {
     if (typeof props.children === 'string') {
