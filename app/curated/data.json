@@ -156,5 +156,23 @@
     "date": "2025",
     "status": "queued",
     "tags": ["programming", "cs"]
+  },
+  {
+    "id": "17",
+    "type": "quote",
+    "title": "Sustainable solutions based on innovation can create a more resilient world only if that innovation is focused on the health and well-being of its inhabitants.",
+    "quote": "Sustainable solutions based on innovation can create a more resilient world only if that innovation is focused on the health and well-being of its inhabitants. And it is at that point — where technology and human needs intersect — that we will find meaningful innovation.",
+    "author": "Frans van Houten",
+    "date": "2025",
+    "tags": ["innovation", "technology", "design"]
+  },
+  {
+    "id": "18",
+    "type": "quote",
+    "title": "The number one benefit of information technology is that it empowers people to do what they want to do.",
+    "quote": "The number one benefit of information technology is that it empowers people to do what they want to do. It lets people be creative. It lets people be productive. It lets people learn things they didn't think they could learn before, and so in a sense it is all about potential.",
+    "author": "Steve Ballmer",
+    "date": "2025",
+    "tags": ["technology", "empowerment", "potential"]
   }
 ]
