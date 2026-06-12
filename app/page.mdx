@@ -1,6 +1,7 @@
 import SpotifyPlaylists from '@/components/spotify-playlists'
 import HomeFeed from '@/components/home-feed'
 import RotatingQuote from '@/components/rotating-quote'
+import AsciiWave from '@/components/ascii-wave'
 
 export const metadata = {
   title: 'Edd Joseph',
@@ -14,14 +15,23 @@ My interests span across a spectrum of subjects, encompassing web development, a
 
 Find me on [GitHub](https://github.com/EGJJR), [X/Twitter](https://x.com/eddjosephjr/), [LinkedIn](https://www.linkedin.com/in/edd-joseph/), and [Instagram](https://instagram.com/eddjosephjr/).
 
+{/* ── Position A: between bio and quote ── */}
+<AsciiWave />
+
 ---
 
 <RotatingQuote />
 
 ---
 
+{/* ── Position B: below the quote ── */}
+<AsciiWave />
+
 <HomeFeed />
 
 <SpotifyPlaylists spotifyUrl="https://open.spotify.com/user/31q65nw6sb2l7od4k457dgwis5ue?si=28c509d97445438b" />
 
 I share insights and learnings in my [newsletter](https://embeds.beehiiv.com/a45cb158-6258-4f7e-abdb-de5dfa4095af).
+
+{/* ── Position C: footer area ── */}
+<AsciiWave />
