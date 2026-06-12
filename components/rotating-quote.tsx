@@ -66,7 +66,7 @@ export default function RotatingQuote() {
           </p>
         </blockquote>
         <p className="mt-3 text-[0.8rem] text-rurikon-300 tracking-wide">
-          — {q.author}
+          ; {q.author}
         </p>
       </div>
 
