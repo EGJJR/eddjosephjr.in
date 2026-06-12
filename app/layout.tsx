@@ -8,6 +8,7 @@ import localFont from "next/font/local";
 import "katex/dist/katex.min.css";
 
 import Navbar from "@/components/navbar";
+import PixelLoader from "@/components/pixel-loader";
 import "./globals.css";
 
 const sans = localFont({
@@ -37,8 +38,11 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   maximumScale: 1,
-  colorScheme: "only light",
-  themeColor: "#fcfcfc",
+  colorScheme: "light dark",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#fcfcfc" },
+    { media: "(prefers-color-scheme: dark)", color: "#0c0d10" },
+  ],
 };
 
 export default function RootLayout({
@@ -47,7 +51,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="overflow-x-hidden touch-manipulation">
+    <html lang="en" className="overflow-x-hidden touch-manipulation" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')}catch(e){}})()` }} />
+      </head>
       <body
         className={cn(
           sans.variable,
@@ -57,8 +64,10 @@ export default function RootLayout({
           "text-sm leading-6 sm:text-[15px] sm:leading-7 md:text-base md:leading-7",
           "text-rurikon-500",
           "antialiased",
+          "transition-colors duration-300",
         )}
       >
+        <PixelLoader />
         <div className="fixed sm:hidden h-6 sm:h-10 md:h-14 w-full top-0 left-0 z-30 pointer-events-none content-fade-out" />
         <div className="flex flex-col mobile:flex-row">
           <Navbar />
