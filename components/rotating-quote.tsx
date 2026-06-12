@@ -85,7 +85,7 @@ export default function RotatingQuote() {
                 setTimeout(() => setPhase('visible'), TRANSITION)
               }, TRANSITION)
             }}
-            className={`w-1 h-1 rounded-full transition-colors duration-300 ${
+            className={`w-1.5 h-1.5 rounded-full transition-colors duration-300 p-2 -m-1 ${
               i === index ? 'bg-rurikon-400' : 'bg-rurikon-200'
             }`}
             aria-label={`Quote ${i + 1}`}

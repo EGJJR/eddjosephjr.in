@@ -43,8 +43,8 @@ export default function HomeFeed() {
         </h2>
         <ul className="space-y-1.5">
           {now.map((item) => (
-            <li key={item.title} className="flex items-baseline gap-2">
-              <span className="font-mono text-[0.6rem] text-rurikon-200 uppercase w-14 flex-shrink-0 tracking-tight">
+            <li key={item.title} className="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-2">
+              <span className="font-mono text-[0.6rem] text-rurikon-200 uppercase sm:w-14 flex-shrink-0 tracking-tight">
                 {typeLabel[item.type]}
               </span>
               <span className="text-rurikon-500">
@@ -60,9 +60,9 @@ export default function HomeFeed() {
                 ) : (
                   item.title
                 )}
-              </span>
-              <span className="text-rurikon-300 text-sm">
-                {item.author}
+                <span className="text-rurikon-300 text-sm ml-1">
+                  {item.author}
+                </span>
               </span>
             </li>
           ))}
@@ -76,15 +76,15 @@ export default function HomeFeed() {
         </h2>
         <ul className="space-y-1.5">
           {recent.map((item) => (
-            <li key={item.title} className="flex items-baseline gap-2">
-              <span className="font-mono text-[0.6rem] text-rurikon-200 uppercase w-14 flex-shrink-0 tracking-tight">
+            <li key={item.title} className="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-2">
+              <span className="font-mono text-[0.6rem] text-rurikon-200 uppercase sm:w-14 flex-shrink-0 tracking-tight">
                 {typeLabel[item.type]}
               </span>
               <span className="text-rurikon-500">
                 {item.title}
-              </span>
-              <span className="text-rurikon-300 text-sm">
-                {item.author}
+                <span className="text-rurikon-300 text-sm ml-1">
+                  {item.author}
+                </span>
               </span>
             </li>
           ))}
