@@ -39,6 +39,8 @@ export default function Navbar() {
         {/* <Item href='/visuals'>Visuals</Item> */}
         <Item href='/projects'>Projects</Item>
         <Item href='/curated'>Curated</Item>
+        <Item href='/design-system'>System</Item>
+        <Item href='/changelog'>Changelog</Item>
         {/* <Item href='/bookshelf'>Bookshelf</Item> */}
         {/* <Item href='/quotes'>Quotes</Item> */}
         {/* <Item href='/newsletter'>Newsletter</Item> */}

@@ -54,6 +54,7 @@ export default function RootLayout({
     <html lang="en" className="overflow-x-hidden touch-manipulation" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')}catch(e){}})()` }} />
+        <link rel="alternate" type="application/rss+xml" title="Edd Joseph Jr." href="/feed.xml" />
       </head>
       <body
         className={cn(
