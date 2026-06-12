@@ -64,6 +64,22 @@
   --background: #fcfcfc;
 }
 
+.dark {
+  --background: #0c0d10;
+  --color-rurikon-50: #14161a;
+  --color-rurikon-100: #1c1f24;
+  --color-rurikon-200: #2a2e36;
+  --color-rurikon-300: #4a5260;
+  --color-rurikon-400: #7a8494;
+  --color-rurikon-500: #a8b2c0;
+  --color-rurikon-600: #c2c9d4;
+  --color-rurikon-700: #d6dce5;
+  --color-rurikon-800: #e4e8ee;
+  --color-rurikon-900: #eff1f5;
+  --color-rurikon-950: #f8f9fb;
+  --color-rurikon-border: rgba(170, 180, 200, 0.15);
+}
+
 :root {
   --sans-variation: 'opsz' 32;
   --font-features: 'cpsp' 1, 'cv01', 'cv03', 'cv04', 'calt', 'ss03',
@@ -131,7 +147,7 @@ main {
 }
 
 pre {
-  background-color: #f7f7f7;
+  background-color: var(--pre-bg, #f7f7f7);
   contain: paint;
   /* margin: 1.75rem 0; */
   overflow-x: auto;
@@ -172,8 +188,23 @@ code {
 }
 
 pre {
-  --shiki-foreground: #414141;
+  --shiki-foreground: var(--shiki-fg-override, #414141);
   --shiki-background: transparent;
+}
+
+.dark pre {
+  --shiki-fg-override: #b8c0d0;
+}
+
+.dark code {
+  --shiki-token-comment: rgba(168, 178, 192, 0.45);
+  --shiki-token-punctuation: rgba(168, 178, 192, 0.65);
+  --shiki-token-keyword: rgba(168, 178, 192, 0.85);
+  --shiki-token-function: hsl(223deg 70% 70%);
+  --shiki-token-string: #48c78e;
+  --shiki-token-string-expression: #48c78e;
+  --shiki-token-constant: hsl(215deg 40% 75%);
+  --shiki-token-link: #48c78e;
 }
 
 code span {
@@ -194,13 +225,13 @@ article {
   }
   .framed > img, .framed > figure > span:first-child {
     padding: var(--frame-padding, 0.875rem);
-    background: var(--frame-background, #fff);
+    background: var(--frame-background, var(--background));
     border: 1px solid var(--color-rurikon-border);
   }
   iframe {
     width: 100%;
     border: 1px solid var(--color-rurikon-border);
-    background-color: #fff;
+    background-color: var(--background);
   }
   details {
     margin-top: 1.75rem;
@@ -221,12 +252,21 @@ article {
 }
 
 .content-fade-out {
-  background: linear-gradient(to bottom, #fcfcfc, #fcfcfc00);
+  background: linear-gradient(to bottom, var(--background), transparent);
 }
 
 *::selection {
-  background: #95a5ac40;
-  color: #485a74;
+  background: var(--selection-bg, #95a5ac40);
+  color: var(--selection-color, #485a74);
+}
+
+.dark {
+  --pre-bg: #16181d;
+  --selection-bg: rgba(100, 130, 170, 0.25);
+  --selection-color: #c0cade;
+
+  --shiki-foreground: #b8c0d0;
+  --shiki-background: transparent;
 }
 
 .dot-leaders {
@@ -302,5 +342,16 @@ article {
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes blurReveal {
+  0% {
+    opacity: 1;
+    backdrop-filter: blur(12px);
+  }
+  100% {
+    opacity: 0;
+    backdrop-filter: blur(0px);
   }
 }

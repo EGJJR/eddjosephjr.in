@@ -1,0 +1,44 @@
+[
+  {
+    "version": "2.0",
+    "date": "2025-06-12",
+    "title": "The Curated Redesign",
+    "entries": [
+      { "type": "added", "text": "Unified /curated page with URL-based type filters replacing separate bookshelf and quotes pages" },
+      { "type": "added", "text": "Dark mode with semantic palette inversion and localStorage persistence" },
+      { "type": "added", "text": "Blur-in page load animation" },
+      { "type": "added", "text": "Rotating quote carousel on homepage with blur transitions" },
+      { "type": "added", "text": "GitHub Actions auto-curation workflow; submit a URL via issue and it auto-categorizes" },
+      { "type": "added", "text": "Design system documentation page" },
+      { "type": "added", "text": "Changelog page" },
+      { "type": "added", "text": "RSS feed for blog posts" },
+      { "type": "changed", "text": "Homepage bio updated with current roles and interests" },
+      { "type": "changed", "text": "Navigation simplified; Bookshelf and Quotes merged into Curated" }
+    ]
+  },
+  {
+    "version": "1.1",
+    "date": "2025-05-30",
+    "title": "Thoughts & Refinements",
+    "entries": [
+      { "type": "added", "text": "Spotify playlists integration on homepage" },
+      { "type": "added", "text": "Newsletter signup page with Beehiiv embed" },
+      { "type": "changed", "text": "Quotes page redesigned with minimalistic layout" },
+      { "type": "changed", "text": "Custom loading state replacing default spinner" }
+    ]
+  },
+  {
+    "version": "1.0",
+    "date": "2024-07-16",
+    "title": "Initial Launch",
+    "entries": [
+      { "type": "added", "text": "Personal site built with Next.js 15, MDX, and Tailwind CSS v4" },
+      { "type": "added", "text": "Rurikon color palette inspired by traditional Japanese indigo" },
+      { "type": "added", "text": "Inter Variable, Lora Italic, and Iosevka Fixed Curly font stack" },
+      { "type": "added", "text": "View transitions with blur crossfade between pages" },
+      { "type": "added", "text": "Thoughts section with MDX-powered blog posts" },
+      { "type": "added", "text": "Projects showcase page" },
+      { "type": "added", "text": "Responsive sidebar navigation" }
+    ]
+  }
+]
