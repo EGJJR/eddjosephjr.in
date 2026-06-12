@@ -1,0 +1,134 @@
+name: Auto-Curate
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  curate:
+    if: contains(github.event.issue.labels.*.name, 'curate')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Parse issue and update curated data
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const body = context.payload.issue.body;
+
+            // Parse issue form fields
+            function parseField(fieldName) {
+              const regex = new RegExp(`### ${fieldName}\\s*\\n\\s*([\\s\\S]*?)(?=\\n### |$)`, 'i');
+              const match = body.match(regex);
+              if (!match) return '';
+              return match[1].trim().replace(/^_No response_$/i, '');
+            }
+
+            const url = parseField('URL');
+            let type = parseField('Type');
+            let title = parseField('Title');
+            let author = parseField('Author');
+            const note = parseField('Note');
+            const tagsRaw = parseField('Tags');
+            const tags = tagsRaw ? tagsRaw.split(',').map(t => t.trim().toLowerCase()).filter(Boolean) : [];
+
+            // Auto-detect type from URL if set to auto-detect
+            if (!type || type === 'auto-detect') {
+              if (url.includes('youtube.com') || url.includes('youtu.be') || url.includes('vimeo.com')) {
+                type = 'video';
+              } else if (url.includes('arxiv.org') || url.includes('doi.org') || url.includes('semanticscholar')) {
+                type = 'paper';
+              } else if (url.includes('podcast') || url.includes('spotify.com/show') || url.includes('apple.com/podcast')) {
+                type = 'podcast';
+              } else if (url) {
+                type = 'article';
+              } else {
+                type = 'book';
+              }
+            }
+
+            // Try to extract title from URL if not provided
+            if (!title && url) {
+              try {
+                // Use issue title as fallback (strip "curate: " prefix)
+                title = context.payload.issue.title.replace(/^curate:\s*/i, '');
+              } catch (e) {
+                title = 'Untitled';
+              }
+            }
+            if (!title) {
+              title = context.payload.issue.title.replace(/^curate:\s*/i, '');
+            }
+
+            if (!author) {
+              author = 'Unknown';
+            }
+
+            // Read existing data
+            const dataPath = 'app/curated/data.json';
+            const existing = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
+
+            // Generate next ID
+            const maxId = Math.max(...existing.map(i => parseInt(i.id, 10)), 0);
+            const now = new Date();
+            const date = `${now.getFullYear()}`;
+
+            // Build new entry
+            const entry = {
+              id: String(maxId + 1),
+              type,
+              title,
+              author,
+              date,
+            };
+            if (url) entry.url = url;
+            if (note) entry.note = note;
+            if (type === 'quote') entry.quote = title;
+            if (tags.length > 0) entry.tags = tags;
+            entry.status = 'queued';
+
+            // Add to beginning of array (newest first)
+            existing.unshift(entry);
+
+            // Write back
+            fs.writeFileSync(dataPath, JSON.stringify(existing, null, 2) + '\n');
+
+            // Set outputs for commit message
+            core.exportVariable('ENTRY_TITLE', title);
+            core.exportVariable('ENTRY_TYPE', type);
+            core.exportVariable('ISSUE_NUMBER', context.payload.issue.number);
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add app/curated/data.json
+          git commit -m "curate: ${ENTRY_TYPE} — ${ENTRY_TITLE}
+
+          Auto-curated from issue #${ISSUE_NUMBER}
+
+          Co-authored-by: github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
+          git push
+
+      - name: Close issue with confirmation
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.issue.number,
+              body: `✅ Added to curated page!\n\n**${process.env.ENTRY_TITLE}** (${process.env.ENTRY_TYPE})\n\nIt will appear on the site after the next deploy.`
+            });
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.issue.number,
+              state: 'closed'
+            });

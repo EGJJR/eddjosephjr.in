@@ -1,0 +1,63 @@
+name: Curate
+description: Add a link, book, podcast, or quote to the curated page
+title: "curate: "
+labels: ["curate"]
+body:
+  - type: input
+    id: url
+    attributes:
+      label: URL
+      description: Link to the content (leave empty for books/quotes)
+      placeholder: https://example.com/article
+    validations:
+      required: false
+  - type: dropdown
+    id: type
+    attributes:
+      label: Type
+      description: What kind of content is this?
+      options:
+        - auto-detect
+        - book
+        - article
+        - post
+        - video
+        - podcast
+        - paper
+        - course
+        - quote
+      default: 0
+    validations:
+      required: true
+  - type: input
+    id: title
+    attributes:
+      label: Title
+      description: Title of the content (auto-detected from URL if left empty)
+      placeholder: "Attention Is All You Need"
+    validations:
+      required: false
+  - type: input
+    id: author
+    attributes:
+      label: Author
+      description: Author or creator (auto-detected if left empty)
+      placeholder: "Vaswani et al."
+    validations:
+      required: false
+  - type: textarea
+    id: note
+    attributes:
+      label: Note
+      description: Your quick take or why this caught your attention
+      placeholder: "Changed how I think about..."
+    validations:
+      required: false
+  - type: input
+    id: tags
+    attributes:
+      label: Tags
+      description: Comma-separated tags
+      placeholder: "ai, research, transformers"
+    validations:
+      required: false

@@ -37,8 +37,9 @@ export default function Navbar() {
         <Item href='/thoughts'>Thoughts</Item>
         {/* <Item href='/visuals'>Visuals</Item> */}
         <Item href='/projects'>Projects</Item>
-        <Item href='/bookshelf'>Bookshelf</Item>
-        <Item href='/quotes'>Quotes</Item>
+        <Item href='/curated'>Curated</Item>
+        {/* <Item href='/bookshelf'>Bookshelf</Item> */}
+        {/* <Item href='/quotes'>Quotes</Item> */}
         {/* <Item href='/newsletter'>Newsletter</Item> */}
         {/* <Item href='/mind-map'>Mind Map</Item> */}
         {/* <Item href='/timeline'>Timeline</Item> */}
