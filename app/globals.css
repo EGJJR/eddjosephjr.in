@@ -144,6 +144,8 @@ main {
   hanging-punctuation: first allow-end last;
   hyphens: auto;
   hyphenate-limit-chars: 10 5 5;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 pre {
