@@ -28,7 +28,7 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggle}
-      className="text-rurikon-300 hover:text-rurikon-600 transition-colors p-0.5 -m-0.5"
+      className="text-rurikon-300 hover:text-rurikon-600 transition-colors p-2 -m-2"
       aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'}
     >
       {dark ? (

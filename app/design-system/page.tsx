@@ -82,7 +82,7 @@ export default function DesignSystemPage() {
         <p className="text-sm text-rurikon-400 mb-6">
           Named after the traditional Japanese color <em>瑠璃紺</em> (rurikon). A single blue-grey scale anchors the entire palette.
         </p>
-        <div className="grid grid-cols-11 gap-1">
+        <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-11 gap-1">
           {colors.map((c) => (
             <div key={c.name} className="flex flex-col items-center gap-1.5">
               <div
@@ -125,8 +125,8 @@ export default function DesignSystemPage() {
               </div>
               <div className="space-y-2 mt-3">
                 {font.weights.map((w) => (
-                  <div key={w.label} className="flex items-baseline gap-3">
-                    <span className="font-mono text-[0.55rem] text-rurikon-200 w-28 flex-shrink-0">{w.label}</span>
+                  <div key={w.label} className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3">
+                    <span className="font-mono text-[0.55rem] text-rurikon-200 sm:w-28 flex-shrink-0">{w.label}</span>
                     <span className={cn(font.cls, 'text-rurikon-500 text-base')} style={w.style}>
                       {font.sample}
                     </span>
@@ -147,8 +147,8 @@ export default function DesignSystemPage() {
       {/* Spacing */}
       <section>
         <h2 className="font-mono text-[0.65rem] text-rurikon-300 uppercase tracking-widest mb-4">Spacing &amp; Layout</h2>
-        <div className="border border-rurikon-border rounded-sm overflow-hidden">
-          <table className="w-full text-sm">
+        <div className="border border-rurikon-border rounded-sm overflow-x-auto">
+          <table className="w-full text-sm min-w-[320px]">
             <thead>
               <tr className="border-b border-rurikon-border bg-rurikon-50">
                 <th className="text-left px-3 py-2 text-rurikon-400 font-mono text-[0.6rem] uppercase tracking-tight">Token</th>

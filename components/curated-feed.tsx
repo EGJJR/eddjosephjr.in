@@ -67,7 +67,7 @@ function TypeFilter({
   counts: Record<string, number>
 }) {
   return (
-    <div className="flex flex-wrap gap-1 pb-4 border-b border-rurikon-border">
+    <div className="flex flex-wrap gap-1.5 sm:gap-1 pb-4 border-b border-rurikon-border">
       {filterTabs.map((tab) => {
         const isActive = tab.key === 'all' ? !active : active === tab.key
         const count = tab.key === 'all'
@@ -79,7 +79,7 @@ function TypeFilter({
             key={tab.key}
             onClick={() => onSelect(tab.key === 'all' ? null : (isActive ? null : tab.key))}
             className={cn(
-              'px-2.5 py-1 text-[0.65rem] font-mono uppercase tracking-tight transition-colors rounded-sm',
+              'px-2.5 py-1.5 sm:py-1 text-[0.7rem] sm:text-[0.65rem] font-mono uppercase tracking-tight transition-colors rounded-sm',
               isActive
                 ? 'text-rurikon-700 bg-rurikon-100'
                 : 'text-rurikon-300 hover:text-rurikon-500'
