@@ -15,7 +15,7 @@
     "title": "We suffer more often in imagination than in reality.",
     "quote": "We suffer more often in imagination than in reality.",
     "author": "Seneca",
-    "date": "2024",
+    "date": "2026",
     "note": "Letters from a Stoic",
     "tags": ["stoicism", "mind"]
   },
@@ -40,22 +40,11 @@
     "tags": ["systems", "engineering"]
   },
   {
-    "id": "5",
-    "type": "article",
-    "title": "The Future of AI Engineering",
-    "author": "Various Authors",
-    "date": "2024",
-    "status": "consumed",
-    "url": "https://example.com/article",
-    "note": "A comprehensive look at the evolving landscape of AI engineering.",
-    "tags": ["ai", "engineering"]
-  },
-  {
     "id": "6",
     "type": "podcast",
     "title": "Lex Fridman Podcast",
     "author": "Lex Fridman",
-    "date": "2024",
+    "date": "2026",
     "status": "in-progress",
     "url": "https://lexfridman.com/podcast",
     "note": "Deep conversations about AI, science, and philosophy.",
@@ -66,7 +55,7 @@
     "type": "video",
     "title": "Men believe not what is true, but what is convenient",
     "author": "YouTube",
-    "date": "2025",
+    "date": "2026",
     "status": "consumed",
     "url": "https://www.youtube.com/watch?v=_7b7_lQXvtE",
     "tags": ["philosophy", "truth"]
@@ -76,7 +65,7 @@
     "type": "video",
     "title": "Anything you lose by being real is fake",
     "author": "YouTube",
-    "date": "2025",
+    "date": "2026",
     "status": "consumed",
     "url": "https://www.youtube.com/watch?v=7VME16GGTIs",
     "tags": ["philosophy", "authenticity"]
@@ -86,7 +75,7 @@
     "type": "video",
     "title": "If you show up every day, the results don't have a choice",
     "author": "YouTube",
-    "date": "2025",
+    "date": "2026",
     "status": "consumed",
     "url": "https://www.youtube.com/watch?v=H6ZOFHlN0QE",
     "tags": ["discipline", "consistency"]
@@ -96,7 +85,7 @@
     "type": "video",
     "title": "Only a slave quantifies its existence through productivity",
     "author": "YouTube",
-    "date": "2025",
+    "date": "2026",
     "status": "consumed",
     "url": "https://www.youtube.com/watch?v=XiNsfLuKJC0",
     "tags": ["philosophy", "productivity"]
@@ -106,7 +95,7 @@
     "type": "article",
     "title": "Do Things That Don't Scale",
     "author": "Paul Graham",
-    "date": "2025",
+    "date": "2026",
     "status": "consumed",
     "url": "https://www.paulgraham.com/ds.html",
     "note": "Why startups must do unscalable things early — recruit users manually, give insane service, build by hand. The founders make it take off, not the product alone.",
@@ -117,7 +106,7 @@
     "type": "article",
     "title": "How To Be Successful",
     "author": "Sam Altman",
-    "date": "2025",
+    "date": "2026",
     "status": "consumed",
     "url": "https://blog.samaltman.com/how-to-be-successful",
     "note": "13 principles for outlier success: compound yourself, have almost too much self-belief, think independently, get good at sales, and make it easy to take risks.",
@@ -128,7 +117,7 @@
     "type": "article",
     "title": "How to Make Wealth",
     "author": "Paul Graham",
-    "date": "2025",
+    "date": "2026",
     "status": "consumed",
     "url": "https://www.paulgraham.com/wealth.html",
     "note": "Wealth is created, not divided. Startups compress a working life into a few years — you trade comfort for intensity and leverage technology to multiply output.",
@@ -139,7 +128,7 @@
     "type": "article",
     "title": "The Anatomy of Determination",
     "author": "Paul Graham",
-    "date": "2025",
+    "date": "2026",
     "status": "consumed",
     "url": "https://www.paulgraham.com/determination.html",
     "note": "Determination beats intelligence as the strongest predictor of startup success. It's willfulness plus discipline plus ambition plus resilience.",
@@ -151,7 +140,7 @@
     "title": "You have power over your mind - not outside events.",
     "quote": "You have power over your mind - not outside events. Realize this, and you will find strength.",
     "author": "Marcus Aurelius",
-    "date": "2024",
+    "date": "2026",
     "note": "Meditations",
     "tags": ["stoicism", "control"]
   },
@@ -180,7 +169,7 @@
     "type": "paper",
     "title": "Neuroplasticity",
     "author": "Vida Demarin & Sandra Morović",
-    "date": "2025",
+    "date": "2026",
     "status": "consumed",
     "url": "https://hrcak.srce.hr/126369",
     "note": "The brain's ability to change and reorganize throughout life. Neural networks form and disappear based on experience — use it or lose it.",
@@ -192,7 +181,7 @@
     "title": "The only way to go fast, is to go well.",
     "quote": "The only way to go fast, is to go well.",
     "author": "Robert C. Martin",
-    "date": "2023",
+    "date": "2026",
     "note": "Clean Code",
     "tags": ["programming", "quality"]
   },
@@ -222,7 +211,7 @@
     "title": "Sustainable solutions based on innovation can create a more resilient world only if that innovation is focused on the health and well-being of its inhabitants.",
     "quote": "Sustainable solutions based on innovation can create a more resilient world only if that innovation is focused on the health and well-being of its inhabitants. And it is at that point — where technology and human needs intersect — that we will find meaningful innovation.",
     "author": "Frans van Houten",
-    "date": "2025",
+    "date": "2026",
     "tags": ["innovation", "technology", "design"]
   },
   {
@@ -231,7 +220,7 @@
     "title": "The number one benefit of information technology is that it empowers people to do what they want to do.",
     "quote": "The number one benefit of information technology is that it empowers people to do what they want to do. It lets people be creative. It lets people be productive. It lets people learn things they didn't think they could learn before, and so in a sense it is all about potential.",
     "author": "Steve Ballmer",
-    "date": "2025",
+    "date": "2026",
     "tags": ["technology", "empowerment", "potential"]
   }
 ]

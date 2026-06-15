@@ -357,3 +357,16 @@ article {
     backdrop-filter: blur(0px);
   }
 }
+
+@keyframes blurIn {
+  0% {
+    opacity: 0;
+    filter: blur(6px);
+    transform: translateY(4px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateY(0);
+  }
+}

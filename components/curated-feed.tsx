@@ -103,7 +103,9 @@ function FindCard({
   isExpanded: boolean
   onToggle: () => void
 }) {
-  const hasDetails = !!(item.note || item.quote || (item.tags && item.tags.length > 0))
+  // ponytail: articles show summary inline (pull-quote style), no expand needed
+  const isArticle = item.type === 'article'
+  const hasDetails = !isArticle && !!(item.note || item.quote || (item.tags && item.tags.length > 0))
 
   return (
     <article className="group">
@@ -153,6 +155,34 @@ function FindCard({
                 <span className="text-rurikon-300 ml-1">· {item.note}</span>
               )}
             </p>
+          </div>
+        ) : item.type === 'article' ? (
+          <div className="py-2 animate-[blurIn_0.5s_ease-out_both]">
+            {/* Pull-quote card for articles */}
+            <div className="border-l-2 border-rurikon-200 pl-4 ml-0">
+              {item.url ? (
+                <a
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block group/link"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <h3 className="font-semibold text-rurikon-600 leading-snug group-hover/link:text-rurikon-800 transition-colors">
+                    {item.title}
+                    <span className="text-rurikon-200 ml-1.5 text-sm">↗</span>
+                  </h3>
+                </a>
+              ) : (
+                <h3 className="font-semibold text-rurikon-600 leading-snug">{item.title}</h3>
+              )}
+              <p className="text-[0.8rem] text-rurikon-400 mt-1">{item.author}</p>
+              {item.note && (
+                <p className="mt-2 font-serif text-rurikon-500 leading-relaxed text-[0.9rem] italic">
+                  {item.note}
+                </p>
+              )}
+            </div>
           </div>
         ) : (
           <div>
