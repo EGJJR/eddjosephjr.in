@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import cn from 'clsx'
 
-export type FindType = 'book' | 'article' | 'post' | 'video' | 'podcast' | 'paper' | 'course' | 'quote'
+export type FindType = 'book' | 'article' | 'post' | 'video' | 'podcast' | 'paper' | 'course' | 'quote' | 'reel'
 export type FilterType = FindType | 'content'
 export type FindStatus = 'consumed' | 'in-progress' | 'queued'
 
@@ -35,6 +35,7 @@ const typeConfig: Record<FindType, { label: string; plural: string }> = {
   paper: { label: 'Paper', plural: 'Papers' },
   course: { label: 'Course', plural: 'Courses' },
   quote: { label: 'Quote', plural: 'Quotes' },
+  reel: { label: 'Reel', plural: 'Reels' },
 }
 
 function getDomain(url: string): string {
@@ -50,7 +51,7 @@ function getDomain(url: string): string {
 const filterTabs: { key: FilterType | 'all'; label: string; match: (t: FindType) => boolean }[] = [
   { key: 'all', label: 'All', match: () => true },
   { key: 'paper', label: 'Papers', match: (t) => t === 'paper' },
-  { key: 'content', label: 'Content', match: (t) => t === 'video' || t === 'course' || t === 'post' },
+  { key: 'content', label: 'Content', match: (t) => t === 'video' || t === 'course' || t === 'post' || t === 'reel' },
   { key: 'podcast', label: 'Podcasts', match: (t) => t === 'podcast' },
   { key: 'article', label: 'Articles', match: (t) => t === 'article' },
   { key: 'quote', label: 'Quotes', match: (t) => t === 'quote' },

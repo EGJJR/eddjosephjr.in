@@ -23,6 +23,7 @@ const typeLabel: Record<string, string> = {
   quote: 'saved',
   paper: 'read',
   course: 'studying',
+  reel: 'saved',
 }
 
 // Items with status "in-progress" are current, recent "consumed" items fill recently
