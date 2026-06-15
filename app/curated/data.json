@@ -7,7 +7,10 @@
     "date": "2026",
     "status": "consumed",
     "note": "Timeless advice on how to live. Every letter feels like a conversation with a wise friend.",
-    "tags": ["philosophy", "stoicism"]
+    "tags": [
+      "philosophy",
+      "stoicism"
+    ]
   },
   {
     "id": "2",
@@ -17,7 +20,10 @@
     "author": "Seneca",
     "date": "2026",
     "note": "Letters from a Stoic",
-    "tags": ["stoicism", "mind"]
+    "tags": [
+      "stoicism",
+      "mind"
+    ]
   },
   {
     "id": "3",
@@ -27,7 +33,10 @@
     "date": "2026",
     "status": "in-progress",
     "note": "A career handbook for developers. Covers everything from personal responsibility to pragmatic approaches for building better software.",
-    "tags": ["programming", "craft"]
+    "tags": [
+      "programming",
+      "craft"
+    ]
   },
   {
     "id": "4",
@@ -37,7 +46,10 @@
     "date": "2026",
     "status": "in-progress",
     "note": "The definitive guide to distributed systems. Makes complex topics like replication, partitioning, and consensus feel intuitive.",
-    "tags": ["systems", "engineering"]
+    "tags": [
+      "systems",
+      "engineering"
+    ]
   },
   {
     "id": "6",
@@ -48,7 +60,11 @@
     "status": "in-progress",
     "url": "https://lexfridman.com/podcast",
     "note": "Deep conversations about AI, science, and philosophy.",
-    "tags": ["ai", "philosophy", "science"]
+    "tags": [
+      "ai",
+      "philosophy",
+      "science"
+    ]
   },
   {
     "id": "7",
@@ -58,7 +74,10 @@
     "date": "2026",
     "status": "consumed",
     "url": "https://www.youtube.com/watch?v=_7b7_lQXvtE",
-    "tags": ["philosophy", "truth"]
+    "tags": [
+      "philosophy",
+      "truth"
+    ]
   },
   {
     "id": "8",
@@ -68,7 +87,10 @@
     "date": "2026",
     "status": "consumed",
     "url": "https://www.youtube.com/watch?v=7VME16GGTIs",
-    "tags": ["philosophy", "authenticity"]
+    "tags": [
+      "philosophy",
+      "authenticity"
+    ]
   },
   {
     "id": "19",
@@ -78,7 +100,10 @@
     "date": "2026",
     "status": "consumed",
     "url": "https://www.youtube.com/watch?v=H6ZOFHlN0QE",
-    "tags": ["discipline", "consistency"]
+    "tags": [
+      "discipline",
+      "consistency"
+    ]
   },
   {
     "id": "20",
@@ -88,7 +113,10 @@
     "date": "2026",
     "status": "consumed",
     "url": "https://www.youtube.com/watch?v=XiNsfLuKJC0",
-    "tags": ["philosophy", "productivity"]
+    "tags": [
+      "philosophy",
+      "productivity"
+    ]
   },
   {
     "id": "22",
@@ -99,7 +127,10 @@
     "status": "consumed",
     "url": "https://www.paulgraham.com/ds.html",
     "note": "Why startups must do unscalable things early — recruit users manually, give insane service, build by hand. The founders make it take off, not the product alone.",
-    "tags": ["startups", "growth"]
+    "tags": [
+      "startups",
+      "growth"
+    ]
   },
   {
     "id": "23",
@@ -110,7 +141,10 @@
     "status": "consumed",
     "url": "https://blog.samaltman.com/how-to-be-successful",
     "note": "13 principles for outlier success: compound yourself, have almost too much self-belief, think independently, get good at sales, and make it easy to take risks.",
-    "tags": ["career", "ambition"]
+    "tags": [
+      "career",
+      "ambition"
+    ]
   },
   {
     "id": "24",
@@ -121,7 +155,10 @@
     "status": "consumed",
     "url": "https://www.paulgraham.com/wealth.html",
     "note": "Wealth is created, not divided. Startups compress a working life into a few years — you trade comfort for intensity and leverage technology to multiply output.",
-    "tags": ["startups", "wealth"]
+    "tags": [
+      "startups",
+      "wealth"
+    ]
   },
   {
     "id": "25",
@@ -132,7 +169,10 @@
     "status": "consumed",
     "url": "https://www.paulgraham.com/determination.html",
     "note": "Determination beats intelligence as the strongest predictor of startup success. It's willfulness plus discipline plus ambition plus resilience.",
-    "tags": ["determination", "startups"]
+    "tags": [
+      "determination",
+      "startups"
+    ]
   },
   {
     "id": "10",
@@ -142,7 +182,10 @@
     "author": "Marcus Aurelius",
     "date": "2026",
     "note": "Meditations",
-    "tags": ["stoicism", "control"]
+    "tags": [
+      "stoicism",
+      "control"
+    ]
   },
   {
     "id": "11",
@@ -152,7 +195,10 @@
     "date": "2026",
     "status": "consumed",
     "note": "The personal journal of a Roman emperor. Raw, honest self-examination.",
-    "tags": ["philosophy", "stoicism"]
+    "tags": [
+      "philosophy",
+      "stoicism"
+    ]
   },
   {
     "id": "12",
@@ -162,7 +208,10 @@
     "date": "2026",
     "status": "consumed",
     "note": "Principles and patterns for writing readable, maintainable code. Changed how I think about naming, functions, and craftsmanship.",
-    "tags": ["programming", "craft"]
+    "tags": [
+      "programming",
+      "craft"
+    ]
   },
   {
     "id": "13",
@@ -173,7 +222,10 @@
     "status": "consumed",
     "url": "https://hrcak.srce.hr/126369",
     "note": "The brain's ability to change and reorganize throughout life. Neural networks form and disappear based on experience — use it or lose it.",
-    "tags": ["neuroscience", "biology"]
+    "tags": [
+      "neuroscience",
+      "biology"
+    ]
   },
   {
     "id": "14",
@@ -183,7 +235,10 @@
     "author": "Robert C. Martin",
     "date": "2026",
     "note": "Clean Code",
-    "tags": ["programming", "quality"]
+    "tags": [
+      "programming",
+      "quality"
+    ]
   },
   {
     "id": "15",
@@ -193,7 +248,10 @@
     "date": "2026",
     "status": "queued",
     "note": "The magnum opus of computer science. Dense, rigorous, and endlessly rewarding for anyone serious about algorithms.",
-    "tags": ["programming", "cs"]
+    "tags": [
+      "programming",
+      "cs"
+    ]
   },
   {
     "id": "21",
@@ -203,7 +261,10 @@
     "date": "2026",
     "status": "in-progress",
     "note": "The original adventure story. Odysseus' ten-year journey home is a meditation on perseverance, identity, and what it means to belong.",
-    "tags": ["literature", "classics"]
+    "tags": [
+      "literature",
+      "classics"
+    ]
   },
   {
     "id": "17",
@@ -212,7 +273,11 @@
     "quote": "Sustainable solutions based on innovation can create a more resilient world only if that innovation is focused on the health and well-being of its inhabitants. And it is at that point — where technology and human needs intersect — that we will find meaningful innovation.",
     "author": "Frans van Houten",
     "date": "2026",
-    "tags": ["innovation", "technology", "design"]
+    "tags": [
+      "innovation",
+      "technology",
+      "design"
+    ]
   },
   {
     "id": "18",
@@ -233,5 +298,16 @@
     "url": "/thoughts/how-to-get-rich",
     "note": "Naval's famous tweetstorm distilling wealth creation into first principles. Seek wealth not status, own equity not wages, arm yourself with specific knowledge and leverage. Build things with no marginal cost of replication — code and media. The returns in life come from compound interest.",
     "tags": ["wealth", "leverage", "startups", "philosophy"]
+  },
+  {
+    "id": "27",
+    "type": "video",
+    "title": "I was laid off by Atlassian",
+    "author": "Vasilios Syrakis",
+    "date": "2026",
+    "status": "consumed",
+    "url": "https://www.youtube.com/watch?v=55pTFVoclvE",
+    "note": "Software engineer reflects on his 8-year tenure at Atlassian following a layoff. Details building an internal Open Service Broker and Sovereign, a dynamic control plane for Envoy Proxy. Beyond the technical architecture, discusses the soft skills—maintenance, team dynamics, conflict resolution, and mentoring.",
+    "tags": ["career", "tech"]
   }
 ]
