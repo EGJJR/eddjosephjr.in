@@ -102,6 +102,50 @@
     "tags": ["philosophy", "productivity"]
   },
   {
+    "id": "22",
+    "type": "article",
+    "title": "Do Things That Don't Scale",
+    "author": "Paul Graham",
+    "date": "2025",
+    "status": "consumed",
+    "url": "https://www.paulgraham.com/ds.html",
+    "note": "Why startups must do unscalable things early — recruit users manually, give insane service, build by hand. The founders make it take off, not the product alone.",
+    "tags": ["startups", "growth"]
+  },
+  {
+    "id": "23",
+    "type": "article",
+    "title": "How To Be Successful",
+    "author": "Sam Altman",
+    "date": "2025",
+    "status": "consumed",
+    "url": "https://blog.samaltman.com/how-to-be-successful",
+    "note": "13 principles for outlier success: compound yourself, have almost too much self-belief, think independently, get good at sales, and make it easy to take risks.",
+    "tags": ["career", "ambition"]
+  },
+  {
+    "id": "24",
+    "type": "article",
+    "title": "How to Make Wealth",
+    "author": "Paul Graham",
+    "date": "2025",
+    "status": "consumed",
+    "url": "https://www.paulgraham.com/wealth.html",
+    "note": "Wealth is created, not divided. Startups compress a working life into a few years — you trade comfort for intensity and leverage technology to multiply output.",
+    "tags": ["startups", "wealth"]
+  },
+  {
+    "id": "25",
+    "type": "article",
+    "title": "The Anatomy of Determination",
+    "author": "Paul Graham",
+    "date": "2025",
+    "status": "consumed",
+    "url": "https://www.paulgraham.com/determination.html",
+    "note": "Determination beats intelligence as the strongest predictor of startup success. It's willfulness plus discipline plus ambition plus resilience.",
+    "tags": ["determination", "startups"]
+  },
+  {
     "id": "10",
     "type": "quote",
     "title": "You have power over your mind - not outside events.",
