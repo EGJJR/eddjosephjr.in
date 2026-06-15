@@ -2,8 +2,11 @@
 
 import Link from 'next/link'
 import cn from 'clsx'
+import curatedData from '@/app/curated/data.json'
 
-type FindType = 'book' | 'article' | 'podcast' | 'video' | 'quote'
+// ponytail: pulls from curated data.json. No separate data source needed.
+
+type FindType = 'book' | 'article' | 'podcast' | 'video' | 'quote' | 'paper' | 'course'
 
 interface HomeFind {
   type: FindType
@@ -12,26 +15,26 @@ interface HomeFind {
   url?: string
 }
 
-const now: HomeFind[] = [
-  { type: 'book', title: 'The Pragmatic Programmer', author: 'Hunt & Thomas' },
-  { type: 'book', title: 'Designing Data-Intensive Applications', author: 'Kleppmann' },
-  { type: 'podcast', title: 'Lex Fridman Podcast', author: 'Lex Fridman', url: 'https://lexfridman.com/podcast' },
-  { type: 'book', title: 'The Myth of Sisyphus', author: 'Camus' },
-]
-
-const recent: HomeFind[] = [
-  { type: 'book', title: 'Letters from a Stoic', author: 'Seneca' },
-  { type: 'video', title: 'Building with React Server Components', author: 'Next.js Team' },
-  { type: 'article', title: 'The Future of AI Engineering', author: 'Various' },
-]
-
-const typeLabel: Record<FindType, string> = {
+const typeLabel: Record<string, string> = {
   book: 'reading',
   article: 'read',
   podcast: 'listening',
   video: 'watched',
   quote: 'saved',
+  paper: 'read',
+  course: 'studying',
+  reel: 'saved',
 }
+
+// Items with status "in-progress" are current, recent "consumed" items fill recently
+const now: HomeFind[] = curatedData
+  .filter((item: any) => item.status === 'in-progress')
+  .map((item: any) => ({ type: item.type, title: item.title, author: item.author, url: item.url }))
+
+const recent: HomeFind[] = curatedData
+  .filter((item: any) => item.status === 'consumed' && item.type !== 'quote')
+  .slice(0, 4)
+  .map((item: any) => ({ type: item.type, title: item.title, author: item.author, url: item.url }))
 
 export default function HomeFeed() {
   return (
@@ -45,7 +48,7 @@ export default function HomeFeed() {
           {now.map((item) => (
             <li key={item.title} className="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-2">
               <span className="font-mono text-[0.6rem] text-rurikon-200 uppercase sm:w-14 flex-shrink-0 tracking-tight">
-                {typeLabel[item.type]}
+                {typeLabel[item.type] || item.type}
               </span>
               <span className="text-rurikon-500">
                 {item.url ? (
@@ -78,10 +81,21 @@ export default function HomeFeed() {
           {recent.map((item) => (
             <li key={item.title} className="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-2">
               <span className="font-mono text-[0.6rem] text-rurikon-200 uppercase sm:w-14 flex-shrink-0 tracking-tight">
-                {typeLabel[item.type]}
+                {typeLabel[item.type] || item.type}
               </span>
               <span className="text-rurikon-500">
-                {item.title}
+                {item.url ? (
+                  <a
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-rurikon-700 transition-colors"
+                  >
+                    {item.title}
+                  </a>
+                ) : (
+                  item.title
+                )}
                 <span className="text-rurikon-300 text-sm ml-1">
                   {item.author}
                 </span>

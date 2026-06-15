@@ -25,7 +25,7 @@ const sitePages: SearchResult[] = [
 
 const typeLabels: Record<string, string> = {
   book: 'Book', article: 'Article', video: 'Video', podcast: 'Podcast',
-  paper: 'Paper', quote: 'Quote', course: 'Course', page: 'Page',
+  paper: 'Paper', quote: 'Quote', course: 'Course', page: 'Page', reel: 'Reel',
 }
 
 function matchScore(item: SearchResult, q: string): number {
