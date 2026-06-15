@@ -46,7 +46,8 @@ export default async function Page() {
               <span className='block text-rurikon-500 group-hover:text-rurikon-700 min-w-0 break-words'>
                 {item.title}
               </span>
-              <span className='text-sm dot-leaders flex-1 text-rurikon-100 font-normal group-hover:text-rurikon-500 transition-colors group-hover:transition-none leading-none hidden mobile:block' />
+              <span className='text-rurikon-200 font-normal mx-1 hidden mobile:inline'>;</span>
+              <span className='flex-1 hidden mobile:block' />
               <time className='block text-rurikon-200 tabular-nums font-normal tracking-tighter group-hover:text-rurikon-500 transition-colors group-hover:transition-none flex-shrink-0'>
                 {item.date}
               </time>
