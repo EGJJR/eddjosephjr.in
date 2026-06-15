@@ -62,23 +62,42 @@
   {
     "id": "7",
     "type": "video",
-    "title": "Building with React Server Components",
-    "author": "Next.js Team",
-    "date": "2024",
+    "title": "Men believe not what is true, but what is convenient",
+    "author": "YouTube",
+    "date": "2025",
     "status": "consumed",
-    "url": "https://youtube.com/watch?v=example",
-    "note": "Excellent explanation of RSC architecture.",
-    "tags": ["react", "web"]
+    "url": "https://www.youtube.com/watch?v=_7b7_lQXvtE",
+    "tags": ["philosophy", "truth"]
   },
   {
     "id": "8",
-    "type": "course",
-    "title": "Advanced TypeScript Patterns",
-    "author": "TypeScript Team",
-    "date": "2024",
+    "type": "video",
+    "title": "Anything you lose by being real is fake",
+    "author": "YouTube",
+    "date": "2025",
     "status": "consumed",
-    "note": "Advanced type manipulation techniques that changed how I think about type systems.",
-    "tags": ["typescript", "programming"]
+    "url": "https://www.youtube.com/watch?v=7VME16GGTIs",
+    "tags": ["philosophy", "authenticity"]
+  },
+  {
+    "id": "19",
+    "type": "video",
+    "title": "If you show up every day, the results don't have a choice",
+    "author": "YouTube",
+    "date": "2025",
+    "status": "consumed",
+    "url": "https://www.youtube.com/watch?v=H6ZOFHlN0QE",
+    "tags": ["discipline", "consistency"]
+  },
+  {
+    "id": "20",
+    "type": "video",
+    "title": "Only a slave quantifies its existence through productivity",
+    "author": "YouTube",
+    "date": "2025",
+    "status": "consumed",
+    "url": "https://www.youtube.com/watch?v=XiNsfLuKJC0",
+    "tags": ["philosophy", "productivity"]
   },
   {
     "id": "9",
