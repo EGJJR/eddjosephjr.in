@@ -27,13 +27,20 @@ export async function POST(req: NextRequest) {
     }
 
     // Fetch current file from GitHub
+    const headers = {
+      Authorization: `token ${token}`,
+      Accept: 'application/vnd.github.v3+json',
+      'Content-Type': 'application/json',
+    }
+
     const fileRes = await fetch(
       `https://api.github.com/repos/${REPO}/contents/${FILE_PATH}?ref=${BRANCH}`,
-      { headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github.v3+json' } }
+      { headers }
     )
 
     if (!fileRes.ok) {
-      return NextResponse.json({ error: 'Failed to fetch data.json from GitHub' }, { status: 500 })
+      const err = await fileRes.text()
+      return NextResponse.json({ error: `Failed to fetch data.json: ${fileRes.status}`, details: err }, { status: 500 })
     }
 
     const fileData = await fileRes.json()
@@ -61,11 +68,7 @@ export async function POST(req: NextRequest) {
       `https://api.github.com/repos/${REPO}/contents/${FILE_PATH}`,
       {
         method: 'PUT',
-        headers: {
-          Authorization: `Bearer ${token}`,
-          Accept: 'application/vnd.github.v3+json',
-          'Content-Type': 'application/json',
-        },
+        headers,
         body: JSON.stringify({
           message: `Add curated ${item.type}: ${item.title}`,
           content: Buffer.from(JSON.stringify(currentContent, null, 2) + '\n').toString('base64'),
@@ -77,7 +80,7 @@ export async function POST(req: NextRequest) {
 
     if (!updateRes.ok) {
       const err = await updateRes.text()
-      return NextResponse.json({ error: 'Failed to commit', details: err }, { status: 500 })
+      return NextResponse.json({ error: `GitHub commit failed (${updateRes.status})`, details: err }, { status: 500 })
     }
 
     return NextResponse.json({ success: true, item: newItem })

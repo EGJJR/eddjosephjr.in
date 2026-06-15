@@ -286,24 +286,28 @@
     "quote": "The number one benefit of information technology is that it empowers people to do what they want to do. It lets people be creative. It lets people be productive. It lets people learn things they didn't think they could learn before, and so in a sense it is all about potential.",
     "author": "Steve Ballmer",
     "date": "2026",
-    "tags": [
-      "technology",
-      "empowerment",
-      "potential"
-    ]
+    "tags": ["technology", "empowerment", "potential"]
   },
   {
     "id": "26",
+    "type": "article",
+    "title": "How to Get Rich (Without Getting Lucky)",
+    "author": "Naval Ravikant",
+    "date": "2026",
+    "status": "consumed",
+    "url": "/thoughts/how-to-get-rich",
+    "note": "Naval's famous tweetstorm distilling wealth creation into first principles. Seek wealth not status, own equity not wages, arm yourself with specific knowledge and leverage. Build things with no marginal cost of replication — code and media. The returns in life come from compound interest.",
+    "tags": ["wealth", "leverage", "startups", "philosophy"]
+  },
+  {
+    "id": "27",
     "type": "video",
-    "title": " I was laid off by Atlassian",
+    "title": "I was laid off by Atlassian",
     "author": "Vasilios Syrakis",
     "date": "2026",
     "status": "consumed",
     "url": "https://www.youtube.com/watch?v=55pTFVoclvE",
-    "note": "In this video, software engineer **Vasilios Syrakis** reflects on his 8-year tenure at [Atlassian](http://www.youtube.com/watch?v=55pTFVoclvE) following a recent layoff. He details his technical contributions, most notably building an internal \"Open Service Broker\" and developing \"[Sovereign](http://www.youtube.com/watch?v=55pTFVoclvE),\" a dynamic control plane for **Envoy Proxy** that automated infrastructure provisioning via templates. Beyond the technical architecture—which included leveraging AWS, HashiCorp Packer, and a sidecar model for microservices—Syrakis discusses the professional \"soft\" skills he cultivated, emphasizing that while building software is straightforward, the true long-term challenge lies in maintenance, team dynamics, conflict resolution, and the complexities of effective mentoring.",
-    "tags": [
-      "career",
-      "tech"
-    ]
+    "note": "Software engineer reflects on his 8-year tenure at Atlassian following a layoff. Details building an internal Open Service Broker and Sovereign, a dynamic control plane for Envoy Proxy. Beyond the technical architecture, discusses the soft skills—maintenance, team dynamics, conflict resolution, and mentoring.",
+    "tags": ["career", "tech"]
   }
 ]
