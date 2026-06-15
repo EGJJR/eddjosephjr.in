@@ -4,6 +4,7 @@ import cn from 'clsx'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import ThemeToggle from './theme-toggle'
+import Search from './search'
 
 function Item(props: React.ComponentProps<typeof Link>) {
   const pathname = usePathname()
@@ -57,11 +58,13 @@ export default function Navbar() {
         {/* <Item href='/analytics'>Analytics</Item> */}
         {/* <Item href='/design-system'>Design System</Item> */}
         {/* <Item href='/guestbook'>Guestbook</Item> */}
-        <li className="mt-2 -mx-2 px-2 hidden mobile:block">
+        <li className="mt-2 -mx-2 px-2 hidden mobile:flex items-center gap-3">
+          <Search />
           <ThemeToggle />
         </li>
       </ul>
-      <div className="mobile:hidden fixed bottom-6 right-6 z-40">
+      <div className="mobile:hidden fixed bottom-6 right-6 z-40 flex items-center gap-3">
+        <Search />
         <ThemeToggle />
       </div>
     </nav>
