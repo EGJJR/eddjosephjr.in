@@ -56,7 +56,8 @@ export default function AdminCurate() {
 
       const data = await res.json()
       if (!res.ok) {
-        setMessage(`Error: ${data.error}`)
+        const detail = data.details ? `\n${data.details}` : ''
+        setMessage(`Error: ${data.error}${detail}`)
       } else {
         setMessage(`Added "${form.title}" — will deploy shortly.`)
         setForm({ type: 'article', title: '', author: '', url: '', note: '', quote: '', status: 'consumed', tags: '' })

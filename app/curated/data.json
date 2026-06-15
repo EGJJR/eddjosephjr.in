@@ -222,5 +222,16 @@
     "author": "Steve Ballmer",
     "date": "2026",
     "tags": ["technology", "empowerment", "potential"]
+  },
+  {
+    "id": "26",
+    "type": "article",
+    "title": "How to Get Rich (Without Getting Lucky)",
+    "author": "Naval Ravikant",
+    "date": "2026",
+    "status": "consumed",
+    "url": "/thoughts/how-to-get-rich",
+    "note": "Naval's famous tweetstorm distilling wealth creation into first principles. Seek wealth not status, own equity not wages, arm yourself with specific knowledge and leverage. Build things with no marginal cost of replication — code and media. The returns in life come from compound interest.",
+    "tags": ["wealth", "leverage", "startups", "philosophy"]
   }
 ]
